@@ -4,11 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Path?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.clockmodelling.HelloController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.itmo.clockmodelling.HelloController">
    <children>
       <Circle fx:id="circle" fill="#c1c1c1" layoutX="400.0" layoutY="300.0" radius="59.0" stroke="BLACK" strokeType="INSIDE" />
       <Button fx:id="button" layoutX="354.0" layoutY="494.0" mnemonicParsing="false" onAction="#onHelloButtonClick" prefHeight="45.0" prefWidth="91.0" text="Button" />
-      <Line fx:id="line" endX="-25.0" endY="-59.00001525878906" layoutX="425.0" layoutY="300.0" startX="-25.0" />
+      <Line fx:id="line" endY="-59.0" layoutX="400.0" layoutY="300.0" />
+      <Button layoutX="638.0" layoutY="494.0" mnemonicParsing="false" onAction="#onTestButtonClick" text="Button" />
+      <Path fx:id="path" layoutX="400.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" />
    </children>
 </AnchorPane>
