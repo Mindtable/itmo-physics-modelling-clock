@@ -5,8 +5,10 @@ import java.util.concurrent.ThreadLocalRandom;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.itmo.clockmodelling.model.Clock;
 
 
 public class HelloController {
@@ -17,11 +19,18 @@ public class HelloController {
     private Circle circle;
 
     @FXML
-    protected void onHelloButtonClick() {
-        circle.setRadius(ThreadLocalRandom.current().nextInt(1, 10) * 10);
-        circle.setCenterX(ThreadLocalRandom.current().nextInt(-400, 400));
-        circle.setCenterY(ThreadLocalRandom.current().nextInt(-300, 300));
+    private Line line;
 
+    private final Clock clock = new Clock(-25, 0, 59, 8);
+
+    @FXML
+    protected void onHelloButtonClick() {
+        clock.makeStep(1);
+
+        line.setEndX(clock.getX());
+        line.setEndY(clock.getY());
+
+        LOGGER.info("Coordinates " + clock.getX() + " " + clock.getY());
         LOGGER.info("Button pressed");
     }
 }
