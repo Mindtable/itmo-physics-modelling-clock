@@ -26,10 +26,14 @@ public class ClockHand {
 
     public void tick() {
         time += STEP;
-        time %= period;
+        time = period == 0 ? 0 : time % period;
     }
 
     private double getAngle() {
+        if (period == 0) {
+            return 0;
+        }
+
         return time * 2 * Math.PI / period;
     }
 }
