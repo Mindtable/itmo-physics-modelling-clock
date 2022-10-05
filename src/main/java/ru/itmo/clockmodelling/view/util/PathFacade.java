@@ -1,10 +1,8 @@
 package ru.itmo.clockmodelling.view.util;
 
-import javafx.collections.ObservableList;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
-import javafx.scene.shape.PathElement;
 
 public class PathFacade {
 

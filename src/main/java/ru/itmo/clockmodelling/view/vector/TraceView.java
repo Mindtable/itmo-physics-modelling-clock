@@ -1,7 +1,5 @@
 package ru.itmo.clockmodelling.view.vector;
 
-import javafx.scene.shape.LineTo;
-import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import ru.itmo.clockmodelling.view.util.PathFacade;
 

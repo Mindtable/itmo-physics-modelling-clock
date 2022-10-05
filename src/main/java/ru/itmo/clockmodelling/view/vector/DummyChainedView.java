@@ -13,8 +13,8 @@ public class DummyChainedView implements ChainedVectorView {
 
     @Override
     public ChainedVectorView addNext(ChainedVectorView next) {
-       this.next = next;
+        this.next = next;
 
-       return next;
+        return next;
     }
 }

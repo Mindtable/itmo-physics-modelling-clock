@@ -1,6 +1,7 @@
 package ru.itmo.clockmodelling.view.vector;
 
 public interface ChainedVectorView {
+
     void update(double centerX, double centerY);
 
     default void update() {
@@ -9,5 +10,7 @@ public interface ChainedVectorView {
 
     default ChainedVectorView addNext(ChainedVectorView next) {
         return null;
-    };
+    }
+
+    ;
 }

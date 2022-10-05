@@ -3,15 +3,12 @@ package ru.itmo.clockmodelling.model;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
-import javafx.scene.shape.PathElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import ru.itmo.clockmodelling.HelloController;
 
 public class Clock {
 
@@ -90,7 +87,7 @@ public class Clock {
                     );
                 }
             },
-        0, 1000 * step / period);
+            0, 1000 * step / period);
         isWorking = true;
     }
 
