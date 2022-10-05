@@ -38,15 +38,22 @@ public class HelloController {
     @FXML
     protected void onHelloButtonClick() {
         if (clock == null) {
+
             path.setStroke(Color.BLUE);
 
-            clock = new Clock(150, 150, 59, 128, line, path);
+            path.setLayoutX(400);
+            path.setLayoutY(300);
+
+            line.setLayoutX(400);
+            line.setLayoutY(300);
+
+            clock = new Clock(-10, 0, 200, 3600, line, path);
         }
 
         if (clock.isWorking()) {
             clock.stop();
         } else {
-            clock.startTimer(1);
+            clock.startTimer(60);
         }
 
         LOGGER.info("Coordinates " + clock.getX() + " " + clock.getY());

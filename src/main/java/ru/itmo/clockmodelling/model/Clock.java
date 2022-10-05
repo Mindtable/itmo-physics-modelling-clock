@@ -8,6 +8,7 @@ import javafx.scene.shape.Line;
 import javafx.scene.shape.LineTo;
 import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
+import javafx.scene.shape.PathElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.itmo.clockmodelling.HelloController;
@@ -38,25 +39,32 @@ public class Clock {
         this.line = line;
         this.root = root;
 
+//        root.setLayoutX(centerX);
+//        root.setLayoutY(centerY);
         line.setStartX(centerX);
         line.setStartY(centerY);
     }
 
     public void makeStep(long step) {
-        time += step;
-        while (Math.abs(time) >= period) {
-            time -= time > 0 ? period : -period;
-        }
 
-        LOGGER.info("New time is " + time);
+        time += step;
+        time %= period;
+
+        if (root.getElements().size() > period / step) {
+            root.getElements().remove(1, 2);
+
+            LineTo pathElement = (LineTo) root.getElements().get(1);
+            root.getElements().set(0, new MoveTo(pathElement.getX(), pathElement.getY()));
+
+        }
     }
 
     public double getX() {
-        return centerX + radius * Math.sin(getAngle());
+        return radius * Math.sin(getAngle());
     }
 
     public double getY() {
-        return centerY - radius * Math.cos(getAngle());
+        return -radius * Math.cos(getAngle());
     }
 
     public void startTimer(long step) {
@@ -67,11 +75,14 @@ public class Clock {
                 public void run() {
                     Platform.runLater(
                         () -> {
+                            makeStep(step);
+
                             if (root.getElements().isEmpty()) {
                                 root.getElements().add(new MoveTo(getX(), getY()));
+                            } else if (!(root.getElements().get(0) instanceof MoveTo)) {
+                                root.getElements().set(0, new MoveTo(getX(), getY()));
                             }
 
-                            makeStep(step);
                             line.setEndX(getX());
                             line.setEndY(getY());
 
@@ -80,7 +91,7 @@ public class Clock {
                     );
                 }
             },
-        0, 4000 * step / period);
+        0, 1000 * step / period);
         isWorking = true;
     }
 
