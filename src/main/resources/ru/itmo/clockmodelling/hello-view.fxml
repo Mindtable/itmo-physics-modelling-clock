@@ -13,5 +13,7 @@
       <Line fx:id="line" endY="-59.0" layoutX="400.0" layoutY="300.0" />
       <Button layoutX="638.0" layoutY="494.0" mnemonicParsing="false" onAction="#onTestButtonClick" text="Button" />
       <Path fx:id="path" layoutX="400.0" layoutY="300.0" stroke="BLACK" strokeType="INSIDE" />
+      <Line fx:id="line1" endY="-59.0" layoutX="410.0" layoutY="310.0" />
+      <Line fx:id="line11" endY="-59.0" layoutX="420.0" layoutY="320.0" />
    </children>
 </AnchorPane>

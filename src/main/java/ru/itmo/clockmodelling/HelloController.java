@@ -16,6 +16,9 @@ import javafx.scene.shape.Path;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.itmo.clockmodelling.model.Clock;
+import ru.itmo.clockmodelling.model.ClockHand;
+import ru.itmo.clockmodelling.view.ChainedVectorView;
+import ru.itmo.clockmodelling.view.ClockHandView;
 
 
 public class HelloController {
@@ -29,11 +32,21 @@ public class HelloController {
     private Line line;
 
     @FXML
+    private Line line1;
+
+    @FXML
+    private Line line11;
+
+    @FXML
     private Path path;
 
     private Clock clock;
 
+    private ChainedVectorView view;
 
+    public HelloController() {
+
+    }
 
     @FXML
     protected void onHelloButtonClick() {
@@ -62,10 +75,12 @@ public class HelloController {
 
     @FXML
     protected void onTestButtonClick() {
-        Path trace = new Path();
-        trace.getElements().add(new MoveTo(100, 100));
-        trace.getElements().add(new LineTo(120, 100));
-        trace.getElements().add(new LineTo(100, 120));
-        trace.setStroke(Color.BLUE);
+        if (view == null) {
+            view = new ClockHandView(line, new ClockHand(100, 16, 1));
+            view.addNext(new ClockHandView(line1, new ClockHand(50, 16, 2)))
+                .addNext(new ClockHandView(line11, new ClockHand(25, 16, 4)));
+        }
+
+        view.update(20, 100);
     }
 }
