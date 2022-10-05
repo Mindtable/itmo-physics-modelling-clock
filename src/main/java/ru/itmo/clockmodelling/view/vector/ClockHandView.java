@@ -1,4 +1,4 @@
-package ru.itmo.clockmodelling.view;
+package ru.itmo.clockmodelling.view.vector;
 
 import javafx.scene.shape.Line;
 import ru.itmo.clockmodelling.model.ClockHand;

@@ -1,4 +1,4 @@
-package ru.itmo.clockmodelling.view;
+package ru.itmo.clockmodelling.view.vector;
 
 public interface ChainedVectorView {
     void update(double centerX, double centerY);
