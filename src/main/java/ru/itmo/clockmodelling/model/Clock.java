@@ -55,7 +55,6 @@ public class Clock {
 
             LineTo pathElement = (LineTo) root.getElements().get(1);
             root.getElements().set(0, new MoveTo(pathElement.getX(), pathElement.getY()));
-
         }
     }
 

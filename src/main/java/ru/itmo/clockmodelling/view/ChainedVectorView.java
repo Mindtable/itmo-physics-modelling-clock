@@ -7,5 +7,7 @@ public interface ChainedVectorView {
         update(0, 0);
     }
 
-    ChainedVectorView addNext(ChainedVectorView next);
+    default ChainedVectorView addNext(ChainedVectorView next) {
+        return null;
+    };
 }

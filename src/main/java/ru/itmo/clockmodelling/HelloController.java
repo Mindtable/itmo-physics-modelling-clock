@@ -1,7 +1,10 @@
 package ru.itmo.clockmodelling;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -19,6 +22,8 @@ import ru.itmo.clockmodelling.model.Clock;
 import ru.itmo.clockmodelling.model.ClockHand;
 import ru.itmo.clockmodelling.view.ChainedVectorView;
 import ru.itmo.clockmodelling.view.ClockHandView;
+import ru.itmo.clockmodelling.view.DummyChainedView;
+import ru.itmo.clockmodelling.view.TraceView;
 
 
 public class HelloController {
@@ -44,9 +49,7 @@ public class HelloController {
 
     private ChainedVectorView view;
 
-    public HelloController() {
-
-    }
+    private Timer timer;
 
     @FXML
     protected void onHelloButtonClick() {
@@ -76,11 +79,31 @@ public class HelloController {
     @FXML
     protected void onTestButtonClick() {
         if (view == null) {
-            view = new ClockHandView(line, new ClockHand(100, 16, 1));
-            view.addNext(new ClockHandView(line1, new ClockHand(50, 16, 2)))
-                .addNext(new ClockHandView(line11, new ClockHand(25, 16, 4)));
+            view = new DummyChainedView();
+            view
+                .addNext(new ClockHandView(line11, new ClockHand(25, -67)))
+                .addNext(new ClockHandView(line, new ClockHand(100, 127)))
+                .addNext(new ClockHandView(line1, new ClockHand(50, 500)))
+                .addNext(new TraceView(path, 500))
+            ;
         }
 
-        view.update(20, 100);
+        startTimer(1);
+    }
+
+    public void startTimer(long step) {
+        timer = new Timer();
+        timer.scheduleAtFixedRate(
+            new TimerTask() {
+                @Override
+                public void run() {
+                    Platform.runLater(
+                        () -> {
+                            view.update(0, 0);
+                        }
+                    );
+                }
+            },
+            0, 1000 / 60);
     }
 }
