@@ -22,8 +22,12 @@ public class HelloController {
     @FXML
     protected void onInitButtonClick() {
         var hands = List.of(
-            new ClockHand(165, 3600),
-            new ClockHand(160, 60)
+            new ClockHand(50, 3600),
+            new ClockHand(50, 60)
+//            new ClockHand(50, -1000),
+//            new ClockHand(50, 500),
+//            new ClockHand(50, -500),
+//            new ClockHand(50, 250)
         );
 
         view = MainViewSingleton.getInstance(root, hands);
@@ -31,6 +35,10 @@ public class HelloController {
 
     @FXML
     protected void onPlayButtonClick() {
+        if (view == null) {
+            onInitButtonClick();
+        }
+
         view.switchTimer();
     }
 }

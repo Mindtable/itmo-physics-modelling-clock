@@ -15,7 +15,7 @@ import ru.itmo.clockmodelling.view.vector.TraceView;
 
 public class MainView {
 
-    private static final int MAX_PATH_SIZE = 500;
+    private static final int MAX_PATH_SIZE = 2500;
 
     private static final int FPS = 60;
 

@@ -23,7 +23,7 @@ public class PathFactory extends NodeFactory {
     public Path create() {
         Path node = new Path();
 
-        node.setStroke(Color.AQUA);
+        node.setStroke(Color.CADETBLUE);
 
         return (Path) addNode(node);
     }

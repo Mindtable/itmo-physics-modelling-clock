@@ -20,6 +20,7 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 800, 600);
 
         stage.setTitle("Моделирование: Часы");
+        stage.setResizable(false);
         stage.setScene(scene);
         stage.setOnCloseRequest(event -> {
             Platform.exit();
